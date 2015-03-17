@@ -1,7 +1,7 @@
 ### run_analysis.R
 
-cwd <- getwd() # remeber current working directory
-setwd("~/GitHub/CleanData_PeerAssemssment")
+cwd <- getwd() # remember current working directory
+setwd("~/GitHub/CleanData_PeerAssessment")
 
 #### Get the data and unzip
 if (!file.exists("data")) { # only download if not already done before
