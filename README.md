@@ -26,18 +26,14 @@ Create one R script called `run_analysis.R` that does the following:
 #### Download and unzip data
 Although not explicitly stated, this obviously is a prerequisite. We check if the data is already there, otherwise download and unzip it. In the last step capture URL and timestamp in a `downloaded.txt` file.
 
-
-
 ```r
 if (!file.exists("data")) { # only download if not already done before
   dir.create("data")
-  setwd("data")
   url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-  download.file(url = url, destfile = "data.zip", method = "curl")
-  unzip(zipfile = "data.zip")
+  download.file(url = url, destfile = "data/data.zip", method = "curl")
+  unzip(zipfile = "data/data.zip")
   # write a little note when and from where the file was downloaded
-  cat(paste("File data.zip downloaded", date(), "from", url), file = "downloaded.txt")
-  setwd("..")
+  cat(paste("File data.zip downloaded", date(), "from", url), file = "data /downloaded.txt")
 }
 ```
 #### Merge the training and the test sets to create one data set
@@ -45,7 +41,7 @@ In the first steps we just read all required files, both metadata and data files
 
 ```r
 # go to where the data is
-setwd("data/UCI HAR Dataset")
+setwd("UCI HAR Dataset")
 # Read the metadata
 activity_labels <- read.table(file="activity_labels.txt")
 features <- read.table(file="features.txt")
@@ -99,8 +95,6 @@ tidy$Activity <- as.character(tidy$Activity)
 
 #### Write a tidy.txt file
 In the last step the tidy data is writen to a plain text file.
-
-
 
 ```r
 write.table(tidy, file="tidy.txt", row.names=FALSE)

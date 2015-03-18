@@ -1,8 +1,10 @@
 
 data
 
-README.html
+*.html
 
 *.history
 
 .Rhistory
+
+UCI*
